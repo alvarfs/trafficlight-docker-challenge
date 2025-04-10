@@ -21,7 +21,7 @@ services:
     networks:
       - traffic-light
 
-  nginx-proxy:    
+  nginx-proxy:
     image: nginx:1.21
     networks:
       - traffic-light
@@ -31,3 +31,13 @@ services:
       - "3000:3000"
       - "4000:4000"
       - "5000:5000"
+
+  nginx-load-balancer:   
+    image: nginx:1.21
+    networks:
+      - traffic-light
+    volumes: 
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./var/log/nginx:/var/log/nginx
+    ports:
+      - "8000:8000"
