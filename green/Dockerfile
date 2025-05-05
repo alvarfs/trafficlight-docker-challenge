@@ -19,8 +19,7 @@ RUN apk add --no-cache npm=7.17.0-r0 && npm install
 COPY app.js .
 
 # 1.1.6 | Copy the "index.pug" and "favicon.ico" files to the "/app/views" directory
-COPY index.pug views/
-COPY favicon.ico views/
+COPY views/ views/
 
 # 1.1.7 | The port "80" should be exposed by the container
 EXPOSE 80
